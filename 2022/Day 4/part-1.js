@@ -54,28 +54,18 @@ async function processCSVFile(){
   try{
     let count = 0;
     const lines = await readCSVFile();
-    for (let i=0; i < 10; i++){
+    for (let i=0; i < lines.length; i++){
       const {firstPairLowerNumber, firstPairUpperNumber, secondPairLowerNumber, secondPairUpperNumber} = parseString(lines[i])
-      if (firstPairLowerNumber <= secondPairLowerNumber){
-        console.log(`${firstPairLowerNumber} <= ${secondPairLowerNumber}`)
-        console.log(`Is ${firstPairUpperNumber} >= ${secondPairUpperNumber}?`)
+      if (firstPairLowerNumber == secondPairLowerNumber){
+        count += 1;
+      } else if (firstPairLowerNumber <= secondPairLowerNumber){
         if (firstPairUpperNumber >= secondPairUpperNumber){
           count += 1;
-          found = "left"
-          console.log(`${count}: ${firstPairLowerNumber} - ${firstPairUpperNumber} encapsulates ${secondPairLowerNumber} - ${secondPairUpperNumber}`)
-        } else {
-          console.log("No, it isn't")
-        }
+      }
       } else if (secondPairLowerNumber <= firstPairLowerNumber){
-        console.log(`${secondPairLowerNumber} <= ${firstPairLowerNumber}`)
-        console.log(`Is ${secondPairUpperNumber} >= ${firstPairUpperNumber}?`)
         if (secondPairUpperNumber >= firstPairUpperNumber){
           count += 1;
-          found = "right"
-          console.log(`${count}: ${firstPairLowerNumber} - ${firstPairUpperNumber} encapsulated by ${secondPairLowerNumber} - ${secondPairUpperNumber}`)
-        } else {
-          console.log("No, it isn't")
-        } 
+        }
       }
     }
     console.log("Total overlap count: ", count);
