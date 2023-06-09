@@ -6,3 +6,4 @@ My Advent of Code solutions
 * Day 2: 2 Stars - 🌟🌟
 * Day 3: 2 Stars - 🌟🌟
 * Day 4: 2 Stars - 🌟🌟
+* Day 5: 1 Stars - 🌟
